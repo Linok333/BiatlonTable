@@ -18,6 +18,7 @@
 	"plugins": [
 		"react"
 	],
+	"parser": "babel-eslint",
 	"rules": {
 		"import/no-cycle": "off",
 		"max-len": "off",

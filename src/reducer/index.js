@@ -38,23 +38,39 @@ const initialState = {
 		},
 	],
 	string: '',
+	total: false,
+	speed: false,
+};
+
+const sortAll = (data, value, current) => {
+	if (value) {
+		data.sort((a, b) => (a[current] > b[current] ? 1 : -1));
+	} else {
+		data.sort((a, b) => (a[current] > b[current] ? -1 : 1));
+	}
+	const ourData = data;
+	return ourData;
 };
 
 const sortTotal = (state) => {
+	const { total } = state;
 	const { data } = state;
-	data.sort((a, b) => (a.total > b.total ? -1 : 1));
-	const ourData = data;
+	const ourData = sortAll(data, total, 'total');
 	return {
+		...state,
+		total: !total,
 		data: ourData,
 		mainData: ourData,
 	};
 };
 
 const sortSpeed = (state) => {
+	const { speed } = state;
 	const { data } = state;
-	data.sort((a, b) => (a.speed > b.speed ? -1 : 1));
-	const ourData = data;
+	const ourData = sortAll(data, speed, 'speed');
 	return {
+		...state,
+		speed: !speed,
 		data: ourData,
 		mainData: ourData,
 	};
@@ -71,6 +87,7 @@ const searchName = (state, searchString) => {
 
 	const newData = mainData.filter((row) => row.participant.toUpperCase().indexOf(searchString.toUpperCase()) === 0);
 	return {
+		...state,
 		data: newData,
 		mainData,
 	};

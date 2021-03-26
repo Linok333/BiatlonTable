@@ -13,7 +13,9 @@ import {
 function Main({
 	state, sortTotal, sortSpeed, searchName,
 }) {
-	const { data, string } = state;
+	const {
+		data, string, total, speed,
+	} = state;
 
 	return (
 		<div className="main">
@@ -25,8 +27,8 @@ function Main({
 			</div>
 			<div className="buttons">
 				<CustomizedButtons sortFunc={sortTotal}
-					data={data} value='true' text="Sort Total"/>
-				<CustomizedButtons sortFunc={sortSpeed}
+					data={data} total={total} value='true' text="Sort Total"/>
+				<CustomizedButtons speed={speed} sortFunc={sortSpeed}
 					data={data} value='false' text="Sort Speed"/>
 			</div>
 		</div>
@@ -38,8 +40,8 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
 	searchName: (string) => dispatch(searchNameAction(string)),
-	sortSpeed: () => dispatch(sortSpeedAction()),
-	sortTotal: () => dispatch(sortTotalAction()),
+	sortSpeed: (num) => dispatch(sortSpeedAction(num)),
+	sortTotal: (num) => dispatch(sortTotalAction(num)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

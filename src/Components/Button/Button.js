@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 
 function CustomizedButtons({ sortFunc, text, value }) {
 	const classes = useStyles();
-
 	const checkFunc = () => {
 		if (value === 'true') {
 			sortFunc();
