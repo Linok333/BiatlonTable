@@ -1,7 +1,7 @@
 import {
 	SORT_TOTAL,SORT_SPEED,SEARCH_NAME,
 } from '../action/actionTypes';
-console.log('dfd')
+console.log('dfd1')
 const initialState = {
 	data: [
 		{
