@@ -2,6 +2,7 @@ import {
 	SORT_TOTAL,SORT_SPEED,SEARCH_NAME,
 } from '../action/actionTypes';
 console.log('dfd12121')
+console.log('fdsss')
 const initialState = {
 	data: [
 		{
