@@ -1,40 +1,40 @@
 import {
-	SORT_TOTAL, SORT_SPEED, SEARCH_NAME,
+	SORT_TOTAL,SORT_SPEED,SEARCH_NAME,
 } from '../action/actionTypes';
-
+console.log('dfd')
 const initialState = {
 	data: [
 		{
-			id: 1, participant: 'Lina', total: 450, speed: 10, country: 'Ukraine', percent: '98%',
+			id: 1,participant: 'Lina',total: 450,speed: 10,country: 'Ukraine',percent: '98%',
 		},
 		{
-			id: 2, participant: 'Vlad', total: 234, speed: 7, country: 'Canada', percent: '75%',
+			id: 2,participant: 'Vlad',total: 234,speed: 7,country: 'Canada',percent: '75%',
 		},
 		{
-			id: 3, participant: 'Andrii', total: 308, speed: 6, country: 'China', percent: '85%',
+			id: 3,participant: 'Andrii',total: 308,speed: 6,country: 'China',percent: '85%',
 		},
 		{
-			id: 4, participant: 'Dima', total: 307, speed: 9, country: 'France', percent: '85%',
+			id: 4,participant: 'Dima',total: 307,speed: 9,country: 'France',percent: '85%',
 		},
 		{
-			id: 5, participant: 'Dina', total: 286, speed: 8, country: 'Russia', percent: '80%',
+			id: 5,participant: 'Dina',total: 286,speed: 8,country: 'Russia',percent: '80%',
 		},
 	],
 	mainData: [
 		{
-			id: 1, participant: 'Lina', total: 450, speed: 10, country: 'Ukraine', percent: '98%',
+			id: 1,participant: 'Lina',total: 450,speed: 10,country: 'Ukraine',percent: '98%',
 		},
 		{
-			id: 2, participant: 'Vlad', total: 234, speed: 7, country: 'Canada', percent: '75%',
+			id: 2,participant: 'Vlad',total: 234,speed: 7,country: 'Canada',percent: '75%',
 		},
 		{
-			id: 3, participant: 'Andrii', total: 308, speed: 6, country: 'China', percent: '85%',
+			id: 3,participant: 'Andrii',total: 308,speed: 6,country: 'China',percent: '85%',
 		},
 		{
-			id: 4, participant: 'Dima', total: 307, speed: 9, country: 'France', percent: '85%',
+			id: 4,participant: 'Dima',total: 307,speed: 9,country: 'France',percent: '85%',
 		},
 		{
-			id: 5, participant: 'Dina', total: 286, speed: 8, country: 'Russia', percent: '80%',
+			id: 5,participant: 'Dina',total: 286,speed: 8,country: 'Russia',percent: '80%',
 		},
 	],
 	string: '',
@@ -42,11 +42,11 @@ const initialState = {
 	speed: false,
 };
 
-const sortAll = (data, value, current) => {
+const sortAll = (data,value,current) => {
 	if (value) {
-		data.sort((a, b) => (a[current] > b[current] ? 1 : -1));
+		data.sort((a,b) => (a[current] > b[current] ? 1 : -1));
 	} else {
-		data.sort((a, b) => (a[current] > b[current] ? -1 : 1));
+		data.sort((a,b) => (a[current] > b[current] ? -1 : 1));
 	}
 	const ourData = data;
 	return ourData;
@@ -55,7 +55,7 @@ const sortAll = (data, value, current) => {
 const sortTotal = (state) => {
 	const { total } = state;
 	const { data } = state;
-	const ourData = sortAll(data, total, 'total');
+	const ourData = sortAll(data,total,'total');
 	return {
 		...state,
 		total: !total,
@@ -67,7 +67,7 @@ const sortTotal = (state) => {
 const sortSpeed = (state) => {
 	const { speed } = state;
 	const { data } = state;
-	const ourData = sortAll(data, speed, 'speed');
+	const ourData = sortAll(data,speed,'speed');
 	return {
 		...state,
 		speed: !speed,
@@ -76,7 +76,7 @@ const sortSpeed = (state) => {
 	};
 };
 
-const searchName = (state, searchString) => {
+const searchName = (state,searchString) => {
 	const { mainData } = state;
 	if (searchString === '') {
 		return {
@@ -93,14 +93,14 @@ const searchName = (state, searchString) => {
 	};
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState,action) => {
 	switch (action.type) {
 		case SORT_TOTAL:
 			return sortTotal(state);
 		case SORT_SPEED:
 			return sortSpeed(state);
 		case SEARCH_NAME:
-			return searchName(state, action.payload);
+			return searchName(state,action.payload);
 		default:
 			return state;
 	}
